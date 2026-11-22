@@ -591,5 +591,66 @@ document.getElementById("diaryDate").value=new Date().toISOString().slice(0,10);
 renderChecks();
 refresh();
 </script>
+  
+<section id="auth-section" class="auth-section">
+  <div class="auth-card">
+    <h1>CIVIL<span>CHECK</span></h1>
+    <p>Your construction site workspace</p>
+
+    <div id="auth-message"></div>
+
+    <label>Email address</label>
+    <input id="auth-email" type="email" placeholder="Enter your email">
+
+    <label>Password</label>
+    <input id="auth-password" type="password" placeholder="Enter your password">
+
+    <button id="signup-btn">Create Account</button>
+    <button id="login-btn">Login</button>
+  </div>
+</section>
+
+<style>
+.auth-section {
+  display: none;
+  min-height: 70vh;
+  align-items: center;
+  justify-content: center;
+  padding: 30px 15px;
+  background: #111;
+}
+.auth-card {
+  background: white;
+  color: #171717;
+  padding: 30px;
+  border-radius: 14px;
+  width: 100%;
+  max-width: 380px;
+}
+.auth-card h1 { color: #111; }
+.auth-card h1 span { color: #b58a35; }
+.auth-card label {
+  display: block;
+  margin-top: 15px;
+}
+.auth-card input {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 12px;
+  margin-top: 6px;
+}
+.auth-card button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 15px;
+  background: #b58a35;
+  color: #111;
+  border: 0;
+  border-radius: 6px;
+  cursor: pointer;
+}
+#auth-message { color: #9b2525; }
+</style>
+
 </body>
 </html>
