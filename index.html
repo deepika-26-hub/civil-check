@@ -652,5 +652,108 @@ refresh();
 #auth-message { color: #9b2525; }
 </style>
 
+<!-- CIVILCHECK LOGIN SECTION -->
+<section id="auth-section" class="auth-section">
+  <div class="auth-card">
+    <h1>CIVIL<span>CHECK</span></h1>
+    <p>Your Construction Site Workspace</p>
+
+    <div id="auth-message"></div>
+
+    <label for="auth-email">Email Address</label>
+    <input
+      id="auth-email"
+      type="email"
+      placeholder="Enter your email"
+      autocomplete="email"
+    >
+
+    <label for="auth-password">Password</label>
+    <input
+      id="auth-password"
+      type="password"
+      placeholder="Enter your password"
+      autocomplete="current-password"
+    >
+
+    <button id="signup-btn" type="button">
+      CREATE ACCOUNT
+    </button>
+
+    <button id="login-btn" type="button">
+      LOGIN
+    </button>
+  </div>
+</section>
+
+<style>
+.auth-section {
+  display: none;
+  min-height: 70vh;
+  align-items: center;
+  justify-content: center;
+  padding: 30px 15px;
+  background: #111111;
+}
+
+.auth-card {
+  background: #ffffff;
+  color: #171717;
+  padding: 30px;
+  border-radius: 14px;
+  width: 100%;
+  max-width: 380px;
+  box-sizing: border-box;
+}
+
+.auth-card h1 {
+  color: #111111;
+  text-align: center;
+}
+
+.auth-card h1 span {
+  color: #b58a35;
+}
+
+.auth-card p {
+  text-align: center;
+  color: #666666;
+}
+
+.auth-card label {
+  display: block;
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+.auth-card input {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 12px;
+  margin-top: 6px;
+  border: 1px solid #cccccc;
+  border-radius: 6px;
+}
+
+.auth-card button {
+  width: 100%;
+  padding: 13px;
+  margin-top: 15px;
+  background: #b58a35;
+  color: #111111;
+  border: 0;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#auth-message {
+  color: #9b2525;
+  text-align: center;
+  margin-top: 12px;
+}
+</style>
+<!-- END CIVILCHECK LOGIN SECTION -->
+
 </body>
 </html>
