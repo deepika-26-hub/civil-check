@@ -1,114 +1,251 @@
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CIVILCHECK | Civil Engineer Assistant</title>
+<meta name="theme-color" content="#111111">
+<title>CIVILCHECK | Construction Management</title>
 
 <style>
-* { box-sizing: border-box; }
+:root {
+  --black:#111111;
+  --dark:#1b1b1b;
+  --gold:#d5ad55;
+  --gold-light:#f1d58e;
+  --white:#ffffff;
+  --bg:#f5f5f3;
+  --muted:#777777;
+  --border:#e8e5dd;
+}
+* {box-sizing:border-box}
 body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #f1f5f9;
-  color: #172b4d;
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:var(--bg);
+  color:#242424;
 }
 header {
-  background: #102a43;
-  color: white;
-  padding: 20px;
+  background:var(--black);
+  color:white;
+  padding:20px 25px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:15px;
 }
-header h1 { margin: 0; letter-spacing: 2px; }
-header p { color: #cbd5e1; margin-bottom: 0; }
-.top {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 10px;
+.logo {
+  color:var(--gold);
+  font-size:25px;
+  font-weight:800;
+  letter-spacing:3px;
 }
-button, input, textarea {
-  font: inherit;
+.tagline {
+  font-size:12px;
+  color:#c7c7c7;
+  margin-top:5px;
 }
-button {
-  border: 0;
-  border-radius: 8px;
-  padding: 11px 15px;
-  cursor: pointer;
+.lang {
+  background:var(--gold);
+  color:#111;
+  font-weight:bold;
+  border:0;
+  border-radius:7px;
+  padding:11px 15px;
+  cursor:pointer;
 }
-.lang { background: #dbeafe; color: #102a43; }
-nav {
-  display: flex;
-  gap: 8px;
-  overflow-x: auto;
-  padding: 12px;
-  background: white;
+.layout {
+  display:flex;
+  min-height:calc(100vh - 80px);
 }
-nav button {
-  background: #e2e8f0;
-  white-space: nowrap;
-  color: #102a43;
+.sidebar {
+  width:225px;
+  background:var(--black);
+  padding:20px 12px;
+  flex-shrink:0;
 }
-nav button.active {
-  background: #0f766e;
-  color: white;
+.sidebar h4 {
+  color:#999;
+  font-size:11px;
+  letter-spacing:2px;
+  padding-left:12px;
 }
-main { max-width: 950px; margin: auto; padding: 18px; }
-h2 { color: #102a43; }
+.navbtn {
+  width:100%;
+  text-align:left;
+  background:transparent;
+  color:#ddd;
+  padding:14px 12px;
+  margin:4px 0;
+  border:0;
+  border-radius:7px;
+  cursor:pointer;
+  font-size:14px;
+}
+.navbtn:hover,.navbtn.active {
+  background:#302a1d;
+  color:var(--gold-light);
+  border-left:3px solid var(--gold);
+}
+.content {
+  flex:1;
+  min-width:0;
+  padding:28px;
+  max-width:1200px;
+}
+.page {display:none}
+.page.active {display:block}
+.heading {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-bottom:22px;
+}
+h2 {margin:0;color:#181818;font-size:25px}
+h3 {margin-top:0}
+.subtitle {color:var(--muted);font-size:13px;margin-top:7px}
+.cards {
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:15px;
+  margin-bottom:20px;
+}
 .card {
-  background: white;
-  padding: 18px;
-  border-radius: 12px;
-  margin-bottom: 15px;
-  box-shadow: 0 2px 8px #0000000c;
+  background:white;
+  padding:20px;
+  border:1px solid var(--border);
+  border-radius:12px;
+  margin-bottom:17px;
+  box-shadow:0 3px 12px #00000006;
 }
-.stats {
-  display: grid;
-  grid-template-columns: repeat(2,1fr);
-  gap: 12px;
+.metric {
+  border-top:3px solid var(--gold);
 }
-.stat {
-  background: #e0f2fe;
-  padding: 16px;
-  border-radius: 10px;
+.metric small {color:#777}
+.metric strong {
+  display:block;
+  font-size:29px;
+  margin:12px 0 5px;
+  color:#171717;
 }
-.stat strong { display: block; font-size: 25px; }
-input, textarea {
-  width: 100%;
-  padding: 12px;
-  margin: 7px 0 14px;
-  border: 1px solid #cbd5e1;
-  border-radius: 8px;
+.gold-text {color:#a47c28}
+input,textarea,select {
+  width:100%;
+  padding:12px;
+  border:1px solid #ddd;
+  border-radius:7px;
+  font:inherit;
+  margin:7px 0 14px;
+  background:white;
 }
-textarea { min-height: 85px; }
-.primary { background: #0f766e; color: white; }
-.danger { background: #fee2e2; color: #991b1b; }
-label { display: block; margin: 10px 0; }
+textarea {min-height:85px;resize:vertical}
+label {
+  font-size:13px;
+  font-weight:bold;
+  display:block;
+}
+button {font:inherit}
+.primary {
+  background:var(--black);
+  color:var(--gold-light);
+  padding:12px 18px;
+  border:1px solid var(--gold);
+  border-radius:7px;
+  cursor:pointer;
+  font-weight:bold;
+}
+.primary:hover {background:#302a1d}
+.secondary {
+  background:#f3eddf;
+  color:#72541b;
+  padding:11px 15px;
+  border:0;
+  border-radius:7px;
+  cursor:pointer;
+}
+.checkline {
+  display:flex;
+  align-items:flex-start;
+  gap:10px;
+  padding:12px 0;
+  border-bottom:1px solid #eee;
+  font-size:14px;
+}
+.checkline input {
+  width:17px;
+  margin:1px 0 0;
+}
 .record {
-  padding: 12px 0;
-  border-bottom: 1px solid #e2e8f0;
+  padding:14px 0;
+  border-bottom:1px solid #eee;
+  overflow-wrap:anywhere;
+  line-height:1.7;
 }
-.hidden { display: none; }
+.empty {color:#888;font-size:13px}
 .result {
-  font-size: 23px;
-  font-weight: bold;
-  color: #0f766e;
+  color:#a47c28;
+  font-size:27px;
+  font-weight:bold;
+  margin:18px 0;
 }
-small { color: #64748b; }
+.progress {
+  background:#eee;
+  height:9px;
+  border-radius:10px;
+  overflow:hidden;
+}
+.progress div {
+  background:var(--gold);
+  height:100%;
+}
+.status {
+  color:#0f766e;
+  font-size:13px;
+  margin-top:10px;
+}
 footer {
-  text-align: center;
-  padding: 25px;
-  color: #64748b;
+  background:var(--black);
+  color:#aaa;
+  text-align:center;
+  padding:20px;
+  font-size:12px;
 }
-@media(max-width:500px) {
-  main { padding: 12px; }
-  header { padding: 15px; }
-  .top h1 { font-size: 23px; }
+@media(max-width:700px) {
+  header {padding:16px}
+  .logo {font-size:21px}
+  .layout {display:block}
+  .sidebar {
+    width:100%;
+    display:flex;
+    overflow-x:auto;
+    padding:8px;
+    gap:5px;
+  }
+  .sidebar h4 {display:none}
+  .navbtn {
+    width:auto;
+    flex-shrink:0;
+    white-space:nowrap;
+    font-size:12px;
+    padding:12px;
+    text-align:center;
+  }
+  .content {padding:17px}
+  .cards {grid-template-columns:1fr 1fr}
+}
+@media(max-width:390px) {
+  .cards {grid-template-columns:1fr}
 }
 @media print {
-  header, nav, .no-print, footer { display: none; }
-  body { background: white; }
-  .card { box-shadow: none; }
+  header,.sidebar,.no-print,footer {display:none!important}
+  .layout,.content {display:block;padding:0}
+  .page {display:none!important}
+  .page.active {display:block!important}
+  body {background:white}
+  .card {box-shadow:none}
 }
 </style>
 </head>
@@ -116,267 +253,343 @@ footer {
 <body>
 
 <header>
-  <div class="top">
-    <div>
-      <h1>CIVILCHECK</h1>
-      <p id="tagline">Your Civil Engineering Assistant</p>
-    </div>
-    <button class="lang" onclick="toggleLanguage()">
-      தமிழ் / EN
-    </button>
+  <div>
+    <div class="logo">CIVILCHECK</div>
+    <div class="tagline" data-en="CONSTRUCTION QUALITY & SITE MANAGEMENT"
+    data-ta="கட்டுமானத் தரம் மற்றும் தள மேலாண்மை">
+    CONSTRUCTION QUALITY & SITE MANAGEMENT</div>
   </div>
+  <button class="lang" onclick="toggleLanguage()">தமிழ் / EN</button>
 </header>
 
-<nav class="no-print">
-  <button class="active" onclick="show('dashboard',this)" data-en="Dashboard" data-ta="முகப்பு">Dashboard</button>
-  <button onclick="show('diary',this)" data-en="Site Diary" data-ta="தளப் பதிவு">Site Diary</button>
-  <button onclick="show('quality',this)" data-en="Quality Check" data-ta="தரச் சோதனை">Quality Check</button>
-  <button onclick="show('calculator',this)" data-en="Calculator" data-ta="கணிப்பான்">Calculator</button>
-  <button onclick="show('reports',this)" data-en="Reports" data-ta="அறிக்கைகள்">Reports</button>
-</nav>
+<div class="layout">
 
-<main>
+<aside class="sidebar no-print">
+  <h4>MAIN MENU</h4>
+  <button class="navbtn active" onclick="openPage('dashboard',this)" data-en="◈ Dashboard" data-ta="◈ முகப்பு">◈ Dashboard</button>
+  <button class="navbtn" onclick="openPage('diary',this)" data-en="▤ Site Diary" data-ta="▤ தளப் பதிவு">▤ Site Diary</button>
+  <button class="navbtn" onclick="openPage('quality',this)" data-en="✓ Quality Check" data-ta="✓ தரச் சோதனை">✓ Quality Check</button>
+  <button class="navbtn" onclick="openPage('calculator',this)" data-en="⌗ Calculator" data-ta="⌗ கணிப்பான்">⌗ Calculator</button>
+  <button class="navbtn" onclick="openPage('reports',this)" data-en="▣ Reports" data-ta="▣ அறிக்கைகள்">▣ Reports</button>
+  <h4>ABOUT</h4>
+  <div style="color:#999;padding:12px;font-size:12px">CIVILCHECK 2.0<br><span style="color:#d5ad55">BLACK GOLD EDITION</span></div>
+</aside>
 
-<section id="dashboard">
-  <h2 data-en="Project Dashboard" data-ta="திட்ட முகப்பு">Project Dashboard</h2>
+<main class="content">
+
+<section id="dashboard" class="page active">
+  <div class="heading">
+    <div>
+      <h2 data-en="Project Dashboard" data-ta="திட்ட முகப்பு">Project Dashboard</h2>
+      <div class="subtitle" data-en="Monitor your construction activities"
+      data-ta="உங்கள் கட்டுமானப் பணிகளைக் கண்காணிக்கவும்">Monitor your construction activities</div>
+    </div>
+    <button class="primary no-print" onclick="openPage('diary',document.querySelectorAll('.navbtn')[1])" data-en="+ New Entry" data-ta="+ புதிய பதிவு">+ New Entry</button>
+  </div>
+
   <div class="card">
-    <label data-en="Project Name" data-ta="திட்டத்தின் பெயர்">Project Name</label>
+    <label data-en="Current Project Name" data-ta="தற்போதைய திட்டத்தின் பெயர்">Current Project Name</label>
     <input id="project" placeholder="Enter project name">
     <button class="primary" onclick="saveProject()" data-en="Save Project" data-ta="திட்டத்தைச் சேமி">Save Project</button>
-    <p id="projectStatus"></p>
+    <div id="projectStatus" class="status"></div>
   </div>
-  <div class="stats">
-    <div class="stat">
-      <small data-en="Diary Entries" data-ta="தளப் பதிவுகள்">Diary Entries</small>
+
+  <div class="cards">
+    <div class="card metric">
+      <small data-en="TOTAL DIARY ENTRIES" data-ta="மொத்த தளப் பதிவுகள்">TOTAL DIARY ENTRIES</small>
       <strong id="diaryCount">0</strong>
+      <small data-en="Saved records" data-ta="சேமித்த பதிவுகள்">Saved records</small>
     </div>
-    <div class="stat">
-      <small data-en="Quality Checks" data-ta="தரச் சோதனைகள்">Quality Checks</small>
+    <div class="card metric">
+      <small data-en="QUALITY ITEMS" data-ta="தரச் சோதனை அம்சங்கள்">QUALITY ITEMS</small>
       <strong id="checkCount">0</strong>
+      <small data-en="Completed checks" data-ta="முடிக்கப்பட்ட சோதனைகள்">Completed checks</small>
+    </div>
+    <div class="card metric">
+      <small data-en="PROJECT STATUS" data-ta="திட்ட நிலை">PROJECT STATUS</small>
+      <strong style="font-size:19px" id="projectState">Active</strong>
+      <small data-en="Local prototype" data-ta="உள்ளூர் மாதிரி">Local prototype</small>
     </div>
   </div>
+
   <div class="card">
-    <h3 data-en="Welcome to CIVILCHECK" data-ta="CIVILCHECK-க்கு வரவேற்கிறோம்">Welcome to CIVILCHECK</h3>
-    <p data-en="Manage your construction records in one place." data-ta="உங்கள் கட்டுமானப் பதிவுகளை ஒரே இடத்தில் நிர்வகிக்கவும்.">
-      Manage your construction records in one place.
-    </p>
+    <h3 data-en="Quality Inspection Progress" data-ta="தர ஆய்வு முன்னேற்றம்">Quality Inspection Progress</h3>
+    <div class="progress"><div id="progressBar" style="width:0%"></div></div>
+    <p id="progressText" class="subtitle">0% completed</p>
+  </div>
+
+  <div class="card">
+    <h3 data-en="Recent Site Activities" data-ta="சமீபத்திய தளப் பணிகள்">Recent Site Activities</h3>
+    <div id="recentList" class="empty">No activities recorded yet.</div>
   </div>
 </section>
 
-<section id="diary" class="hidden">
-  <h2 data-en="Daily Site Diary" data-ta="தினசரி தளப் பதிவு">Daily Site Diary</h2>
+<section id="diary" class="page">
+  <div class="heading">
+    <div>
+      <h2 data-en="Daily Site Diary" data-ta="தினசரி தளப் பதிவு">Daily Site Diary</h2>
+      <div class="subtitle" data-en="Record daily construction work"
+      data-ta="தினசரி கட்டுமானப் பணிகளைப் பதிவு செய்யவும்">Record daily construction work</div>
+    </div>
+  </div>
   <div class="card">
     <label data-en="Date" data-ta="தேதி">Date</label>
     <input type="date" id="diaryDate">
     <label data-en="Work Completed" data-ta="நிறைவு செய்யப்பட்ட வேலை">Work Completed</label>
     <textarea id="work" placeholder="Describe today's work"></textarea>
     <label data-en="Labour Count" data-ta="தொழிலாளர்கள் எண்ணிக்கை">Labour Count</label>
-    <input type="number" id="labour" min="0" placeholder="Enter number">
+    <input type="number" min="0" id="labour" placeholder="Number of workers">
     <label data-en="Materials Used" data-ta="பயன்படுத்திய பொருட்கள்">Materials Used</label>
     <textarea id="materials" placeholder="Cement, sand, steel..."></textarea>
-    <button class="primary" onclick="addDiary()" data-en="Save Entry" data-ta="பதிவைச் சேமி">Save Entry</button>
+    <button class="primary" onclick="addDiary()" data-en="Save Diary Entry" data-ta="தளப் பதிவைச் சேமி">Save Diary Entry</button>
+    <div id="diaryStatus" class="status"></div>
   </div>
   <div class="card">
-    <h3 data-en="Saved Entries" data-ta="சேமித்த பதிவுகள்">Saved Entries</h3>
+    <h3 data-en="Saved Site Records" data-ta="சேமித்த தளப் பதிவுகள்">Saved Site Records</h3>
     <div id="diaryList"></div>
   </div>
 </section>
 
-<section id="quality" class="hidden">
-  <h2 data-en="Quality Checklist" data-ta="தரச் சரிபார்ப்புப் பட்டியல்">Quality Checklist</h2>
+<section id="quality" class="page">
+  <div class="heading">
+    <div>
+      <h2 data-en="Quality Inspection" data-ta="தர ஆய்வு">Quality Inspection</h2>
+      <div class="subtitle" data-en="Demonstration checklist – verify against approved project specifications."
+      data-ta="மாதிரிச் சரிபார்ப்புப் பட்டியல் – அங்கீகரிக்கப்பட்ட திட்ட விவரங்களுடன் சரிபார்க்கவும்.">
+      Demonstration checklist – verify against approved project specifications.</div>
+    </div>
+  </div>
   <div class="card">
-    <p data-en="Demonstration checklist – validate against project specifications." data-ta="மாதிரிச் சரிபார்ப்புப் பட்டியல் – திட்ட விவரக்குறிப்புகளுடன் சரிபார்க்கவும்.">
-      Demonstration checklist – validate against project specifications.
-    </p>
+    <label data-en="Select Inspection Stage" data-ta="ஆய்வு நிலையைக் தேர்ந்தெடுக்கவும்">Select Inspection Stage</label>
+    <select id="stage" onchange="renderChecks()">
+      <option value="Foundation">Foundation / அடித்தளம்</option>
+      <option value="Reinforcement">Reinforcement / கம்பிகள்</option>
+      <option value="Formwork">Formwork / வார்ப்பு</option>
+      <option value="Concrete">Concrete / கான்கிரீட்</option>
+      <option value="Curing">Curing / கியூரிங்</option>
+    </select>
     <div id="checks"></div>
-    <button class="primary" onclick="saveChecks()" data-en="Save Checklist" data-ta="பட்டியலைச் சேமி">Save Checklist</button>
-    <p id="qualityStatus"></p>
+    <button class="primary" onclick="saveChecks()" data-en="Save Inspection" data-ta="ஆய்வைச் சேமி">Save Inspection</button>
+    <div id="qualityStatus" class="status"></div>
   </div>
 </section>
 
-<section id="calculator" class="hidden">
+<section id="calculator" class="page">
   <h2 data-en="Concrete Volume Calculator" data-ta="கான்கிரீட் கனஅளவு கணிப்பான்">Concrete Volume Calculator</h2>
+  <div class="subtitle" data-en="Basic rectangular volume calculation"
+  data-ta="அடிப்படை செவ்வக கனஅளவு கணக்கீடு">Basic rectangular volume calculation</div>
   <div class="card">
-    <p data-en="Enter dimensions in metres." data-ta="அளவுகளை மீட்டரில் உள்ளிடவும்.">Enter dimensions in metres.</p>
+    <p data-en="Enter all dimensions in metres." data-ta="அனைத்து அளவுகளையும் மீட்டரில் உள்ளிடவும்.">Enter all dimensions in metres.</p>
     <label data-en="Length (m)" data-ta="நீளம் (மீ)">Length (m)</label>
     <input type="number" id="length" min="0" step="any">
     <label data-en="Width (m)" data-ta="அகலம் (மீ)">Width (m)</label>
     <input type="number" id="width" min="0" step="any">
     <label data-en="Depth / Height (m)" data-ta="ஆழம் / உயரம் (மீ)">Depth / Height (m)</label>
     <input type="number" id="depth" min="0" step="any">
-    <button class="primary" onclick="calculate()" data-en="Calculate" data-ta="கணக்கிடு">Calculate</button>
-    <p class="result" id="result">0.00 m³</p>
-    <small data-en="Volume = Length × Width × Depth. This is a basic geometric calculation, not a complete material estimate." data-ta="கனஅளவு = நீளம் × அகலம் × ஆழம். இது அடிப்படை வடிவியல் கணக்கீடு மட்டுமே.">
-      Volume = Length × Width × Depth. This is a basic geometric calculation, not a complete material estimate.
-    </small>
+    <button class="primary" onclick="calculate()" data-en="Calculate Volume" data-ta="கனஅளவைக் கணக்கிடு">Calculate Volume</button>
+    <div class="result" id="result">0.000 m³</div>
+    <small data-en="Volume = Length × Width × Depth. This is not a complete concrete material estimate."
+    data-ta="கனஅளவு = நீளம் × அகலம் × ஆழம். இது முழுமையான கான்கிரீட் பொருள் மதிப்பீடு அல்ல.">
+    Volume = Length × Width × Depth. This is not a complete concrete material estimate.</small>
   </div>
 </section>
 
-<section id="reports" class="hidden">
+<section id="reports" class="page">
   <h2 data-en="Project Reports" data-ta="திட்ட அறிக்கைகள்">Project Reports</h2>
+  <div class="subtitle" data-en="Review and print your records"
+  data-ta="உங்கள் பதிவுகளைப் பார்த்து அச்சிடவும்">Review and print your records</div>
   <div class="card">
-    <h3 id="reportProject">Project Report</h3>
+    <h3 id="reportProject">CIVILCHECK Project Report</h3>
+    <p id="reportDate"></p>
+    <h3 data-en="Daily Site Records" data-ta="தினசரி தளப் பதிவுகள்">Daily Site Records</h3>
     <div id="reportDiary"></div>
-    <p id="reportQuality"></p>
-    <button class="primary no-print" onclick="window.print()" data-en="Print / Save PDF" data-ta="அச்சிடு / PDF சேமி">Print / Save PDF</button>
+    <h3 data-en="Quality Inspection Summary" data-ta="தர ஆய்வு சுருக்கம்">Quality Inspection Summary</h3>
+    <div id="reportQuality"></div>
+    <button class="primary no-print" onclick="window.print()" data-en="Print / Save as PDF" data-ta="அச்சிடு / PDF சேமி">Print / Save as PDF</button>
   </div>
 </section>
 
 </main>
+</div>
 
 <footer>
-  CIVILCHECK © 2026 | Built for better site documentation
-  <p>Prototype only. Verify engineering decisions with qualified professionals.</p>
+  CIVILCHECK © 2026 | BLACK GOLD EDITION
+  <p>Prototype for documentation assistance. Verify all engineering decisions with qualified professionals.</p>
 </footer>
 
 <script>
 let tamil = false;
 
-const qualityItems = [
-  ["Check approved drawings", "அங்கீகரிக்கப்பட்ட வரைபடங்களைச் சரிபார்க்கவும்"],
-  ["Check formwork condition", "ஃபார்ம்வொர்க் நிலையைச் சரிபார்க்கவும்"],
-  ["Check reinforcement against drawings", "வரைபடங்களின்படி கம்பிகளைச் சரிபார்க்கவும்"],
-  ["Check concrete delivery records", "கான்கிரீட் விநியோகப் பதிவுகளைச் சரிபார்க்கவும்"],
-  ["Record curing observations", "கியூரிங் பதிவுகளைச் செய்யவும்"],
-  ["Record inspection observations", "ஆய்வு குறிப்புகளைப் பதிவு செய்யவும்"]
-];
+const qualityItems = {
+ Foundation:[
+  ["Verify approved foundation drawings","அங்கீகரிக்கப்பட்ட அடித்தள வரைபடங்களைச் சரிபார்க்கவும்"],
+  ["Record excavation observations","அகழ்வு குறிப்புகளைப் பதிவு செய்யவும்"],
+  ["Verify founding level against drawings","வரைபடங்களின்படி அடித்தள மட்டத்தைச் சரிபார்க்கவும்"],
+  ["Record pre-pour inspection approval","கான்கிரீட் ஊற்றுவதற்கு முந்தைய ஆய்வு அனுமதியைப் பதிவு செய்யவும்"]
+ ],
+ Reinforcement:[
+  ["Verify bar size against drawings","வரைபடங்களின்படி கம்பி அளவைச் சரிபார்க்கவும்"],
+  ["Verify spacing against drawings","வரைபடங்களின்படி இடைவெளியைச் சரிபார்க்கவும்"],
+  ["Record cover inspection","கான்கிரீட் கவர் ஆய்வைப் பதிவு செய்யவும்"],
+  ["Record reinforcement inspection approval","கம்பி ஆய்வு அனுமதியைப் பதிவு செய்யவும்"]
+ ],
+ Formwork:[
+  ["Record formwork inspection","வார்ப்புப் பலகை ஆய்வைப் பதிவு செய்யவும்"],
+  ["Check dimensions against drawings","வரைபடங்களின்படி அளவுகளைச் சரிபார்க்கவும்"],
+  ["Record support and stability observations","தாங்கிகள் மற்றும் நிலைத்தன்மை குறிப்புகளைப் பதிவு செய்யவும்"]
+ ],
+ Concrete:[
+  ["Record concrete grade from approved mix details","அங்கீகரிக்கப்பட்ட கலவை விவரங்களிலிருந்து தரத்தைப் பதிவு செய்யவும்"],
+  ["Record delivery and batch details","விநியோகம் மற்றும் பேட்ச் விவரங்களைப் பதிவு செய்யவும்"],
+  ["Record fresh concrete test results","புதிய கான்கிரீட் சோதனை முடிவுகளைப் பதிவு செய்யவும்"],
+  ["Record placement and compaction observations","கான்கிரீட் இடுதல் மற்றும் செறிவூட்டல் குறிப்புகளைப் பதிவு செய்யவும்"]
+ ],
+ Curing:[
+  ["Record curing start date and time","கியூரிங் தொடங்கிய தேதி மற்றும் நேரத்தைப் பதிவு செய்யவும்"],
+  ["Record curing method","கியூரிங் முறையைப் பதிவு செய்யவும்"],
+  ["Record curing observations","கியூரிங் குறிப்புகளைப் பதிவு செய்யவும்"]
+ ]
+};
 
-function read(key, fallback) {
-  try {
-    return JSON.parse(localStorage.getItem(key)) ?? fallback;
-  } catch {
-    return fallback;
-  }
+function read(key,fallback) {
+ try {
+  return JSON.parse(localStorage.getItem(key)) ?? fallback;
+ } catch { return fallback; }
 }
 
-let diaries = read("cc_diaries", []);
-let checks = read("cc_checks", []);
-let projectName = localStorage.getItem("cc_project") || "";
+let diaries=read("cc_diaries",[]);
+let checks=read("cc_checks",[]);
+let projectName=localStorage.getItem("cc_project") || "";
 
-function show(id, btn) {
-  document.querySelectorAll("main section").forEach(s => s.classList.add("hidden"));
-  document.getElementById(id).classList.remove("hidden");
-  document.querySelectorAll("nav button").forEach(b => b.classList.remove("active"));
-  btn.classList.add("active");
-  refresh();
+function safe(value) {
+ return String(value).replace(/[&<>"']/g,c=>({
+ "&":"&amp;","<":"&lt;",">":"&gt;",
+ '"':"&quot;","'":"&#39;"
+ })[c]);
+}
+
+function openPage(id,btn) {
+ document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+ document.getElementById(id).classList.add("active");
+ document.querySelectorAll(".navbtn").forEach(b=>b.classList.remove("active"));
+ if(btn) btn.classList.add("active");
+ refresh();
 }
 
 function saveProject() {
-  projectName = document.getElementById("project").value.trim();
-  if (!projectName) return alert("Enter a project name");
-  localStorage.setItem("cc_project", projectName);
-  document.getElementById("projectStatus").textContent = "Project saved!";
-  refresh();
+ projectName=document.getElementById("project").value.trim();
+ if(!projectName) return alert(tamil?"திட்டத்தின் பெயரை உள்ளிடவும்":"Enter a project name");
+ localStorage.setItem("cc_project",projectName);
+ document.getElementById("projectStatus").textContent="✓ Project saved";
+ refresh();
 }
 
 function addDiary() {
-  const date = document.getElementById("diaryDate").value;
-  const work = document.getElementById("work").value.trim();
-  const labour = document.getElementById("labour").value;
-  const materials = document.getElementById("materials").value.trim();
-
-  if (!date || !work) return alert("Enter date and work details");
-
-  diaries.push({date, work, labour, materials});
-  localStorage.setItem("cc_diaries", JSON.stringify(diaries));
-
-  document.getElementById("work").value = "";
-  document.getElementById("labour").value = "";
-  document.getElementById("materials").value = "";
-  refresh();
-  alert("Site diary saved!");
-}
-
-function saveChecks() {
-  checks = qualityItems.map((item, i) => ({
-    name: item[0],
-    done: document.getElementById("check" + i).checked
-  }));
-  localStorage.setItem("cc_checks", JSON.stringify(checks));
-  document.getElementById("qualityStatus").textContent = "Checklist saved!";
-  refresh();
-}
-
-function calculate() {
-  const l = Number(document.getElementById("length").value);
-  const w = Number(document.getElementById("width").value);
-  const d = Number(document.getElementById("depth").value);
-
-  if (![l,w,d].every(v => Number.isFinite(v) && v > 0)) {
-    alert("Enter three positive dimensions");
-    return;
-  }
-
-  document.getElementById("result").textContent =
-    (l * w * d).toFixed(3) + " m³";
-}
-
-function escapeHTML(value) {
-  return String(value).replace(/[&<>"']/g, c => ({
-    "&":"&amp;", "<":"&lt;", ">":"&gt;",
-    '"':"&quot;", "'":"&#39;"
-  })[c]);
+ let date=document.getElementById("diaryDate").value;
+ let work=document.getElementById("work").value.trim();
+ let labour=document.getElementById("labour").value;
+ let materials=document.getElementById("materials").value.trim();
+ if(!date || !work) return alert("Enter the date and work details");
+ diaries.push({date,work,labour,materials});
+ localStorage.setItem("cc_diaries",JSON.stringify(diaries));
+ document.getElementById("work").value="";
+ document.getElementById("labour").value="";
+ document.getElementById("materials").value="";
+ document.getElementById("diaryStatus").textContent="✓ Diary entry saved";
+ refresh();
 }
 
 function renderChecks() {
-  const saved = checks;
-  document.getElementById("checks").innerHTML = qualityItems.map((item,i) => {
-    const old = saved.find(c => c.name === item[0]);
-    return `<label>
-      <input style="width:auto;margin-right:8px"
-       type="checkbox" id="check${i}" ${old?.done ? "checked" : ""}>
-      ${tamil ? item[1] : item[0]}
-    </label>`;
-  }).join("");
+ let stage=document.getElementById("stage").value;
+ let items=qualityItems[stage];
+ document.getElementById("checks").innerHTML=items.map((item,i)=>{
+  let key=stage+"|"+item[0];
+  let saved=checks.find(c=>c.key===key);
+  return `<label class="checkline">
+   <input type="checkbox" id="q${i}" ${saved?.done?"checked":""}>
+   <span>${tamil?item[1]:item[0]}</span>
+  </label>`;
+ }).join("");
 }
 
-function refresh() {
-  document.getElementById("project").value = projectName;
-  document.getElementById("diaryCount").textContent = diaries.length;
-  document.getElementById("checkCount").textContent =
-    checks.filter(c => c.done).length;
+function saveChecks() {
+ let stage=document.getElementById("stage").value;
+ let items=qualityItems[stage];
+ items.forEach((item,i)=>{
+  let key=stage+"|"+item[0];
+  let entry={key,stage,name:item[0],done:document.getElementById("q"+i).checked};
+  let old=checks.findIndex(c=>c.key===key);
+  if(old>=0) checks[old]=entry;
+  else checks.push(entry);
+ });
+ localStorage.setItem("cc_checks",JSON.stringify(checks));
+ document.getElementById("qualityStatus").textContent="✓ Inspection saved";
+ refresh();
+ renderChecks();
+}
 
-  document.getElementById("diaryList").innerHTML =
-    diaries.map(d => `<div class="record">
-      <strong>${escapeHTML(d.date)}</strong><br>
-      ${escapeHTML(d.work)}<br>
-      Labour: ${escapeHTML(d.labour || "Not entered")}<br>
-      Materials: ${escapeHTML(d.materials || "Not entered")}
-    </div>`).join("") || "No entries yet.";
-
-  document.getElementById("reportProject").textContent =
-    projectName || "Project Report";
-
-  document.getElementById("reportDiary").innerHTML =
-    diaries.map(d => `<div class="record">
-      <strong>${escapeHTML(d.date)}</strong><br>
-      ${escapeHTML(d.work)}<br>
-      Labour: ${escapeHTML(d.labour || "Not entered")}<br>
-      Materials: ${escapeHTML(d.materials || "Not entered")}
-    </div>`).join("") || "No diary entries.";
-
-  document.getElementById("reportQuality").textContent =
-    "Completed quality checklist items: " +
-    checks.filter(c => c.done).length + " / " + checks.length;
+function calculate() {
+ let values=["length","width","depth"].map(id=>Number(document.getElementById(id).value));
+ if(!values.every(v=>Number.isFinite(v)&&v>0)) {
+  alert("Enter three positive dimensions in metres");
+  return;
+ }
+ document.getElementById("result").textContent=
+ (values[0]*values[1]*values[2]).toFixed(3)+" m³";
 }
 
 function toggleLanguage() {
-  tamil = !tamil;
-  document.querySelectorAll("[data-en]").forEach(el => {
-    el.textContent = tamil ? el.dataset.ta : el.dataset.en;
-  });
-  document.getElementById("tagline").textContent = tamil
-    ? "உங்கள் சிவில் பொறியியல் உதவியாளர்"
-    : "Your Civil Engineering Assistant";
-  renderChecks();
+ tamil=!tamil;
+ document.querySelectorAll("[data-en]").forEach(el=>{
+  el.textContent=tamil?el.dataset.ta:el.dataset.en;
+ });
+ document.getElementById("work").placeholder=tamil?"இன்றைய வேலையை விவரிக்கவும்":"Describe today's work";
+ document.getElementById("materials").placeholder=tamil?"சிமெண்ட், மணல், கம்பி...":"Cement, sand, steel...";
+ document.getElementById("project").placeholder=tamil?"திட்டத்தின் பெயரை உள்ளிடவும்":"Enter project name";
+ renderChecks();
 }
 
-document.getElementById("diaryDate").value =
-  new Date().toISOString().slice(0,10);
+function refresh() {
+ document.getElementById("project").value=projectName;
+ document.getElementById("diaryCount").textContent=diaries.length;
+ document.getElementById("checkCount").textContent=checks.filter(c=>c.done).length;
+ document.getElementById("projectState").textContent=projectName?"Active":"Not set";
 
+ let total=checks.length;
+ let completed=checks.filter(c=>c.done).length;
+ let percent=total?Math.round(completed/total*100):0;
+ document.getElementById("progressBar").style.width=percent+"%";
+ document.getElementById("progressText").textContent=percent+"% completed";
+
+ let entries=diaries.slice().reverse();
+ document.getElementById("diaryList").innerHTML=entries.map(d=>
+ `<div class="record"><b>${safe(d.date)}</b><br>
+ ${safe(d.work)}<br>Labour: ${safe(d.labour||"Not entered")}<br>
+ Materials: ${safe(d.materials||"Not entered")}</div>`
+ ).join("")||'<p class="empty">No diary entries yet.</p>';
+
+ document.getElementById("recentList").innerHTML=
+ entries.slice(0,4).map(d=>
+ `<div class="record"><b>${safe(d.date)}</b> – ${safe(d.work)}</div>`
+ ).join("")||'<p class="empty">No activities recorded yet.</p>';
+
+ document.getElementById("reportProject").textContent=projectName||"CIVILCHECK Project Report";
+ document.getElementById("reportDate").textContent="Generated: "+new Date().toLocaleDateString();
+
+ document.getElementById("reportDiary").innerHTML=
+ entries.map(d=>`<div class="record"><b>${safe(d.date)}</b><br>
+ ${safe(d.work)}<br>Labour: ${safe(d.labour||"Not entered")}<br>
+ Materials: ${safe(d.materials||"Not entered")}</div>`
+ ).join("")||"No diary entries.";
+
+ document.getElementById("reportQuality").innerHTML=
+ checks.map(c=>`<div class="record">${safe(c.stage)} – ${safe(c.name)}: ${c.done?"Completed":"Pending"}</div>`
+ ).join("")||"No inspections saved.";
+}
+
+document.getElementById("diaryDate").value=new Date().toISOString().slice(0,10);
 renderChecks();
 refresh();
-  <!-- CIVILCHECK first deployment -->
 </script>
 </body>
 </html>
