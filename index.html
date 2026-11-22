@@ -757,5 +757,111 @@ refresh();
 </style>
 <!-- END CIVILCHECK LOGIN SECTION -->
 
+<script>
+  // CIVILCHECK - SUPABASE CONNECTION
+
+  const SUPABASE_URL = "YOUR_SUPABASE_API_URL";
+  const SUPABASE_KEY = "YOUR_SUPABASE_PUBLISHABLE_KEY";
+
+  const db = window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY,
+    {
+      auth: {
+        persistSession: true,
+        autoRefreshToken: true,
+        detectSessionInUrl: true
+      }
+    }
+  );
+
+  const authSection = document.getElementById("auth-section");
+  const emailInput = document.getElementById("auth-email");
+  const passwordInput = document.getElementById("auth-password");
+  const message = document.getElementById("auth-message");
+
+  function showMessage(text) {
+    message.textContent = text;
+  }
+
+  // CREATE ACCOUNT
+  document.getElementById("signup-btn").onclick = async () => {
+    const email = emailInput.value.trim();
+    const password = passwordInput.value;
+
+    if (!email || !password) {
+      showMessage("Enter your email and password.");
+      return;
+    }
+
+    if (password.length < 8) {
+      showMessage("Password must contain at least 8 characters.");
+      return;
+    }
+
+    showMessage("Creating account...");
+
+    const { data, error } = await db.auth.signUp({
+      email,
+      password
+    });
+
+    if (error) {
+      showMessage(error.message);
+    } else if (!data.session) {
+      showMessage("Please verify your email.");
+    } else {
+      showMessage("Account created successfully!");
+    }
+  };
+
+  // LOGIN
+  document.getElementById("login-btn").onclick = async () => {
+    const email = emailInput.value.trim();
+    const password = passwordInput.value;
+
+    if (!email || !password) {
+      showMessage("Enter your email and password.");
+      return;
+    }
+
+    showMessage("Logging in...");
+
+    const { error } = await db.auth.signInWithPassword({
+      email,
+      password
+    });
+
+    if (error) {
+      showMessage(error.message);
+    }
+  };
+
+  // RESTORE LOGIN SESSION
+  async function checkLogin() {
+    const { data, error } = await db.auth.getSession();
+
+    if (error) {
+      showMessage(error.message);
+      return;
+    }
+
+    if (data.session) {
+      authSection.style.display = "none";
+    } else {
+      authSection.style.display = "flex";
+    }
+  }
+
+  checkLogin();
+
+  db.auth.onAuthStateChange((event, session) => {
+    authSection.style.display = session ? "none" : "flex";
+  });
+</script>
+const SUPABASE_URL = "https://ghmkgiucrjyiyodcemks.supabase.co/rest/v1/
+";
+const SUPABASE_KEY = "sb_publishable_lEjgx8qVM7mNi1E1OWqiMA_rQxiIerL";
+</script>
 </body>
 </html>
